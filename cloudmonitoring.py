@@ -32,13 +32,14 @@ while True:
         hum=random.randint(10, 40)
         #print(hum)
         temp =random.randint(30, 80)
+	light=random.randint(10,50)
         #Send Temperature & Humidity to IBM Watson
-        data = { 'Temperature' : temp, 'Humidity': hum }
+        data = { 'Temperature' : temp, 'Humidity': hum ,'lightintensity' : light}
         #print (data)
         def myOnPublishCallback():
-            print ("Published Temperature = %s C" % temp, "Humidity = %s %%" % hum, "to IBM Watson")
+            print ("Published Temperature = %s C" % temp, "Humidity = %s %%" % hum, "lightintensity= %s C" %, light"to IBM Watson")
 
-        success = deviceCli.publishEvent("Weather", "json", data, qos=0, on_publish=myOnPublishCallback)
+        success = deviceCli.publishEvent("DHT11", "json", data, qos=0, on_publish=myOnPublishCallback)
         if not success:
             print("Not connected to IoTF")
         time.sleep(2)
