@@ -37,7 +37,7 @@ while True:
         data = { 'Temperature' : temp, 'Humidity': hum ,'lightintensity' : light}
         #print (data)
         def myOnPublishCallback():
-            print ("Published Temperature = %s C" % temp, "Humidity = %s %%" % hum, "lightintensity= %s C" %, light"to IBM Watson")
+            print ("Published Temperature = %s C" % temp, "Humidity = %s %%" % hum, "lightintensity= %s C" %light,"to IBM Watson")
 
         success = deviceCli.publishEvent("DHT11", "json", data, qos=0, on_publish=myOnPublishCallback)
         if not success:
